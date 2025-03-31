@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:eos_advance_login/screens/login_screen.dart';
 import 'package:eos_advance_login/theme/light_theme.dart';
 import 'package:eos_advance_login/theme/foundation/app_theme.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart' as kakao;
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -39,12 +40,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Firebase 초기화 수정
   try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform, // 필요시 주석 해제
-    );
-    print('Firebase 초기화 성공');
+    if (Firebase.apps.isEmpty) {
+      // ✅ 이미 초기화된 앱이 없을 때만 실행
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      print('Firebase 초기화 성공');
+    } else {
+      print('Firebase가 이미 초기화됨');
+    }
+    kakao.KakaoSdk.init(
+        nativeAppKey: "2ed327302aa53c28137bd9d6c9bbafd1",
+        javaScriptAppKey:
+            "d5f9e295c08752ff1b1c1b892985f7be"); // 🔹 카카오 네이티브 앱 키 입력
+    print('✅ Kakao SDK 초기화 완료');
   } catch (e) {
     print('Firebase 초기화 오류: $e');
   }

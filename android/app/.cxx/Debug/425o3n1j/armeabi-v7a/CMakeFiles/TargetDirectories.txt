@@ -1,0 +1,2 @@
+C:/dd/bucket_list_with_firebase/android/app/.cxx/Debug/425o3n1j/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/dd/bucket_list_with_firebase/android/app/.cxx/Debug/425o3n1j/armeabi-v7a/CMakeFiles/rebuild_cache.dir

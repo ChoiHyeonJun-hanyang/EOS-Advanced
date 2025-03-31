@@ -229,7 +229,7 @@ class _LoginScreenState extends State<LoginScreen> {
       children: [
         TextButton(
           onPressed: () {
-            // TODO: [과제 2-2] 비밀번호 재설정 기능 구현
+            // TODO: [과제 1-1] 비밀번호 재설정 기능 구현
             /*
              * 비밀번호 재설정 과제
              * 
@@ -262,30 +262,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         TextButton(
           onPressed: () {
-            // TODO: [과제 2-3] 회원가입 기능 구현
-            /*
-             * 회원가입 과제
-             * 
-             * 구현 단계:
-             * 1. 회원가입 입력 폼 구현
-             *    - 이메일 입력 필드
-             *    - 비밀번호 입력 필드 (obscureText: true)
-             *    - 비밀번호 확인 필드 (두 비밀번호 일치 여부 확인)
-             *    - 다이얼로그 또는 별도 화면으로 구현 가능
-             * 
-             * 2. 입력값 유효성 검사
-             *    - 이메일 형식 검증
-             *    - 비밀번호 길이 및 강도 검증 (6자 이상)
-             *    - 비밀번호-확인 일치 여부 확인
-             * 
-             * 3. Firebase 회원가입 요청 처리
-             *    - FirebaseAuth.instance.createUserWithEmailAndPassword() 메서드 사용
-             *    - 주요 오류 코드 처리:
-             *      > email-already-in-use: 이미 사용 중인 이메일
-             *      > weak-password: 취약한 비밀번호
-             *      > invalid-email: 유효하지 않은 이메일 형식
-             *    - 성공 시 자동 로그인 처리
-             */
             Provider.of<AuthService>(context, listen: false).signUp(
               email: _emailController.text,
               password: _passwordController.text,
@@ -342,17 +318,6 @@ class _LoginScreenState extends State<LoginScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // 카카오 로그인 버튼
-              _buildSocialButton(
-                text: '카카오로 로그인',
-                onPressed: () => _handleKakaoLogin(context),
-                backgroundColor: const Color(0xFFFEE500),
-                textColor: Colors.black,
-                iconPath: 'assets/icons/kakao_logo.svg',
-              ),
-
-              const SizedBox(height: 12),
-
               // 구글 로그인 버튼
               _buildSocialButton(
                 text: '구글로 로그인',
@@ -360,6 +325,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 backgroundColor: theme.color.surface,
                 textColor: theme.color.text,
                 iconPath: 'assets/icons/google_logo.svg',
+              ),
+
+              const SizedBox(height: 12),
+
+              // 카카오 로그인 버튼
+              _buildSocialButton(
+                text: '카카오로 로그인',
+                onPressed: () => _handleKakaoLogin(context),
+                backgroundColor: const Color(0xFFFEE500),
+                textColor: Colors.black,
+                iconPath: 'assets/icons/kakao_logo.svg',
               ),
 
               const SizedBox(height: 12),
@@ -471,10 +447,57 @@ class _LoginScreenState extends State<LoginScreen> {
 
   /// 카카오 로그인 처리 메서드
   void _handleKakaoLogin(BuildContext context) {
-    // 카카오 로그인 로직 구현 위치
-    _showLoginMessage(context, '카카오');
+    // TODO: [과제 2-3] 카카오 로그인 구현
+    // 로딩 표시
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    // AuthService를 통해 카카오 로그인 시도
+    Provider.of<AuthService>(context, listen: false).signInWithKakao(
+      onSuccess: () {
+        // mounted 체크를 추가하여 위젯이 아직 트리에 있는지 확인
+        if (!mounted) return;
+
+        // 안전하게 Navigator 작업 수행
+        try {
+          // 로딩 다이얼로그 닫기
+          Navigator.of(context).pop();
+          // 홈 화면으로 이동
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
+          // 성공 메시지 표시
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('카카오 로그인 성공!')),
+          );
+        } catch (e) {
+          print('네비게이션 오류: $e');
+        }
+      },
+      onError: (err) {
+        // mounted 체크를 추가
+        if (!mounted) return;
+
+        try {
+          // 로딩 다이얼로그 닫기
+          Navigator.of(context).pop();
+          // 오류 메시지 표시
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(err)),
+          );
+        } catch (e) {
+          print('네비게이션 오류: $e');
+        }
+      },
+    );
   }
 
+  // TODO: [과제 1-3] 구글 로그인 구현
   /// 구글 로그인 처리 메서드
   void _handleGoogleLogin(BuildContext context) {
     // 로딩 상태 표시

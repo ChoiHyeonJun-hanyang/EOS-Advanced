@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBpfRF6vvaWbZt5NUKgJJ9wa8z5xGuZl-s',
-    appId: '1:145551522874:web:8c4d4c544e72ed6e48c903',
-    messagingSenderId: '145551522874',
-    projectId: 'eos-advance',
-    authDomain: 'eos-advance.firebaseapp.com',
-    storageBucket: 'eos-advance.firebasestorage.app',
-    measurementId: 'G-YYTYYTRRZN',
+    apiKey: 'AIzaSyAw8zTQNbIy-kF4IMmCUojKNxHZtgw-jBQ',
+    appId: '1:697908495744:web:c31fb67c1a751b2819ed65',
+    messagingSenderId: '697908495744',
+    projectId: 'bucketlistwithfirebase-f1558',
+    authDomain: 'bucketlistwithfirebase-f1558.firebaseapp.com',
+    storageBucket: 'bucketlistwithfirebase-f1558.firebasestorage.app',
+    measurementId: 'G-9FBTMN6JYL',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA7BgB5ix2bqQeZz4M5ajvB8ej0YgEmuHM',
-    appId: '1:145551522874:android:11752679284c73c548c903',
-    messagingSenderId: '145551522874',
-    projectId: 'eos-advance',
-    storageBucket: 'eos-advance.firebasestorage.app',
+    apiKey: 'AIzaSyCm4Dn6mazv1ec4OkjcpC9mNT_S1uVJPaI',
+    appId: '1:697908495744:android:39b40ae0f4552f5c19ed65',
+    messagingSenderId: '697908495744',
+    projectId: 'bucketlistwithfirebase-f1558',
+    storageBucket: 'bucketlistwithfirebase-f1558.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDGVW8aSjlNUMF6mFQfLdPwNMjox6ZN6F4',
-    appId: '1:145551522874:ios:6a7e93430ae75a4b48c903',
-    messagingSenderId: '145551522874',
-    projectId: 'eos-advance',
-    storageBucket: 'eos-advance.firebasestorage.app',
+    apiKey: 'AIzaSyARHJU02eGEKNklPFRpLOzQG4VpM1Enoqs',
+    appId: '1:697908495744:ios:04dad5d592d6c06219ed65',
+    messagingSenderId: '697908495744',
+    projectId: 'bucketlistwithfirebase-f1558',
+    storageBucket: 'bucketlistwithfirebase-f1558.firebasestorage.app',
     iosBundleId: 'com.example.eosAdvanceLogin',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDGVW8aSjlNUMF6mFQfLdPwNMjox6ZN6F4',
-    appId: '1:145551522874:ios:6a7e93430ae75a4b48c903',
-    messagingSenderId: '145551522874',
-    projectId: 'eos-advance',
-    storageBucket: 'eos-advance.firebasestorage.app',
+    apiKey: 'AIzaSyARHJU02eGEKNklPFRpLOzQG4VpM1Enoqs',
+    appId: '1:697908495744:ios:04dad5d592d6c06219ed65',
+    messagingSenderId: '697908495744',
+    projectId: 'bucketlistwithfirebase-f1558',
+    storageBucket: 'bucketlistwithfirebase-f1558.firebasestorage.app',
     iosBundleId: 'com.example.eosAdvanceLogin',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBpfRF6vvaWbZt5NUKgJJ9wa8z5xGuZl-s',
-    appId: '1:145551522874:web:83ce5f985015b03648c903',
-    messagingSenderId: '145551522874',
-    projectId: 'eos-advance',
-    authDomain: 'eos-advance.firebaseapp.com',
-    storageBucket: 'eos-advance.firebasestorage.app',
-    measurementId: 'G-E6L4VJ2WP7',
+    apiKey: 'AIzaSyAw8zTQNbIy-kF4IMmCUojKNxHZtgw-jBQ',
+    appId: '1:697908495744:web:a0e0707c39907d1419ed65',
+    messagingSenderId: '697908495744',
+    projectId: 'bucketlistwithfirebase-f1558',
+    authDomain: 'bucketlistwithfirebase-f1558.firebaseapp.com',
+    storageBucket: 'bucketlistwithfirebase-f1558.firebasestorage.app',
+    measurementId: 'G-VVRV495LGX',
   );
+
 }

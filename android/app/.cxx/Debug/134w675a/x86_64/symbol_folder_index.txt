@@ -1,0 +1,1 @@
+C:\dd\bucket_list_with_firebase\build\app\intermediates\cxx\Debug\134w675a\obj\x86_64
